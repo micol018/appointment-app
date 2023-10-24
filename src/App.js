@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
 import { IoPaw } from "react-icons/io5";
 import './App.css';
@@ -33,22 +33,28 @@ function App() {
 
 
 
-  const fetchData = useCallback(() => {
-    fetch('./data.json')
-      .then(response => response.json())
-      .then(data => {
-        setAppointmentList(data)
-      })
-  }, [])
-
   useEffect(() => {
-    fetchData()
-  }, [fetchData])
+    async function fetchData() {
+      try {
+        const response = await fetch('/data.json');
+        if (response.ok) {
+          const data = await response.json();
+          setAppointmentList(data);
+        } else {
+          console.error('Failed to fetch data');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <>
-      <div className="App container mx-auto mt-3 mb-3 px-2">
-        <h1 className="text-5xl my-5 font-light text-center"><IoPaw className="inline-block text-amber-400 text-4xl align-middle" /> Vet Clinic Appointments <IoPaw className="inline-block text-amber-400 text-4xl align-middle" /></h1>
+      <div className="App mx-3 md:mx-5 lg:mx-10 mt-3 md:mt-5 lg:mt-10 mb-3 px-2">
+        <h1 className="text-2xl md:text-5xl my-5 text-center text-white"><IoPaw className="inline-block text-blue-400 text-2xl md:text-4xl align-middle" /> Vet Clinic Appointments <IoPaw className="inline-block text-blue-400 text-2xl md:text-4xl align-middle" /></h1>
         <AddAppointment 
         onSendAppointment={myAppointment => setAppointmentList([...appointmentList, myAppointment])}
         lastId={appointmentList.reduce((max, item) => Number(item.id) > max ? Number(item.id) : max, 0)}

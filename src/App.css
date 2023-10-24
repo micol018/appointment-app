@@ -1,13 +1,14 @@
 body {
-  background: url("https://static.vecteezy.com/system/resources/previews/001/925/126/non_2x/colorful-dog-footprint-wallpaper-illustration-vector.jpg");
-  text-align: center;
+  background: #360033;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0b8793, #360033);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0b8793, #360033); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .App {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(9.8px);
+  backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(9.8px);
   border: 1px solid rgba(255, 255, 255, 0.3);
 }

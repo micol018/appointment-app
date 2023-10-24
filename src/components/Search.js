@@ -45,11 +45,11 @@ const Search = ({query, onQueryChange, sortBy, onSortByChange, orderBy, onOrderB
                     <BiSearch className='text-gray-900' />
                     <label htmlFor='query' className='sr-only'/>
                 </div>
-                <input type="text" name='query' value={query} onChange={(event) => {onQueryChange(event.target.value)}}
+                <input type="text" name='query' id="query" value={query} onChange={(event) => {onQueryChange(event.target.value)}}
                 className='py-2 pl-8 rounded-md focus:ring-indigo-500 focus:border-indigo-500 block sm:text-sm border-gray-300 align-text-bottom w-full' placeholder='Search' />
                 
             </div>
-            <div className='inline-block relative mt-1 pl-2 right-0 flex items-center'>
+            <div className='relative mt-1 pl-2 right-0 flex items-center'>
                 <div>
                     <button type="button" onClick={() => {setToggleSort(!toggleSort)}} className='justify-center px-2 py-2 bg-blue-400 border-blue-400 text-sm text-white hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 flex items-center rounded-md w-max h-fit' id='options-menu' aria-haspopup="true" aria-expanded="true">
                     Sort By <BiCaretDown className='ml-1' />
