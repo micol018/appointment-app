@@ -36,17 +36,16 @@ function App() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('/data.json');
-        if (response.ok) {
-          const data = await response.json();
-          setAppointmentList(data);
-        } else {
-          console.error('Failed to fetch data');
+        const response = await fetch('./data.json');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
         }
+        const data = await response.json();
+        setAppointmentList(data);
       } catch (error) {
         console.error('Error:', error);
       }
-    }
+    }    
 
     fetchData();
   }, []);
