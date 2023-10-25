@@ -65,7 +65,7 @@ function App() {
         onSortByChange={mySort => setSortBy(mySort)}
         />
 
-        <ul className='divide-y divide-gray-200'>
+        <ul className='divide-y divide-gray-500'>
           {filteredAppointment
             .map(appointment => (
               <AppointmentInfo key={appointment.id} appointment={appointment}
